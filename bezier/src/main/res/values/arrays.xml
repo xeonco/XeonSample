@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="curve">
+        <item>二阶</item>
+        <item>三阶 </item>
+        <item>自动二阶</item>
+        <item>自动三阶</item>
+    </string-array>
+
+    <string-array name="bezier">
+        <item>一阶</item>
+        <item>二阶</item>
+        <item>三阶 </item>
+        <item>四阶</item>
+        <item>五阶</item>
+        <item>六阶</item>
+        <item>七阶</item>
+        <item>n阶</item>
+    </string-array>
+</resources>
