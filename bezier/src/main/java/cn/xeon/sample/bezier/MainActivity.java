@@ -2,6 +2,7 @@ package cn.xeon.sample.bezier;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,7 +16,7 @@ import cn.xeon.sample.bezier.lib.BezierView;
 import cn.xeon.sample.bezier.lib.CurveView;
 import cn.xeon.sample.bezier.lib.NormalView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener,  AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener, CompoundButton.OnCheckedChangeListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,  AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener, CompoundButton.OnCheckedChangeListener, BezierView.OnAutoValueCallback {
 
 	private BezierView bv_bezier;
 	private NormalView bv_normal;
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 	private SeekBar sb_view;
 	private CheckBox cb_view;
 	private float t = 0; // bezier t value ,between 0 to 1
+	private TextView tv_value;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 		TextView tv_curve = (TextView)this.findViewById(R.id.tv_curve);
 		tv_curve.setOnClickListener(this);
+
+		tv_value = (TextView)this.findViewById(R.id.tv_value);
 		ll_bezier = this.findViewById(R.id.ll_bezier);
 
 		sb_view = (SeekBar)this.findViewById(R.id.sb_view);
@@ -53,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 		sb_view.setOnSeekBarChangeListener(this);
 		cb_view.setOnCheckedChangeListener(this);
+		bv_bezier.setOnAutoValueCallback(this);
 
 	}
 
@@ -163,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 	@Override
 	public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-		t = i / 100;
+		t = (float)i / (float)100;
 		bv_bezier.setT(t);
 	}
 
@@ -179,6 +185,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 	@Override
 	public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+		if(b){
+			bv_bezier.start();
+		}
+		else{
+			bv_bezier.stop();
+		}
+	}
 
+	@Override
+	public void onAutoValueCallback(float value) {
+		Log.v("jacklam", "value;" + value);
+		tv_value.setText(String.format("%.2f", value));
 	}
 }

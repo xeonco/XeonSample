@@ -64,11 +64,17 @@
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_value"
+            android:paddingLeft="4dip"
+            android:paddingRight="4dip"
+            android:text="0.00"/>
         <CheckBox
             android:id="@+id/cb_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:text="auto"/>
     </LinearLayout>
     <cn.xeon.sample.bezier.lib.NormalView
