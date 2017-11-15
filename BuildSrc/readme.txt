@@ -1,0 +1,1 @@
+bezier项目有使用，当调用 gradlew :bezier:clean 就会看到这个plugin的信息，这是针对当个项目的plugin，名字必须是BuildSrc
