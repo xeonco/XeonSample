@@ -44,5 +44,5 @@ buildscript {
     }
 }
 
-apply plugin: 'cn.xeon.gradle.plugin'
+apply plugin: 'cn.xeon.gradle.plugin.remote'
 
